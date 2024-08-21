@@ -1,0 +1,49 @@
+<div style="width: 100%; height: 100%; align-items: center">
+  <div style="width: 80%" *ngIf="wishList.length == 0">
+    <mat-card appearance="outlined">
+      <mat-card-content>No Product Added to Wish List</mat-card-content>
+    </mat-card>
+  </div>
+  <div
+    style="width: 100%; display: flex; flex-direction: row"
+    *ngIf="wishList.length > 0"
+  >
+    <div style="width: 80%">
+      <mat-grid-list cols="1" rowHeight="9:1">
+        <mat-grid-tile *ngFor="let p of wishList; index as i">
+          <mat-card
+            appMaterialElevation
+            class="example-card"
+            appearance="outlined"
+          >
+            <mat-card-header>
+              <img
+                mat-card-sm-image
+                [src]="p.imgUrl"
+                alt="Photo of a Shiba Inu"
+              />
+            </mat-card-header>
+
+            <mat-card-content style="margin-top: 10px">
+              <p style="text-decoration: solid; font-weight: bold">
+                Name: {{ p.name }}
+              </p>
+              <p style="text-decoration: solid; font-weight: bold">
+                Des: {{ p.description }}
+              </p>
+              <p style="text-decoration: solid; font-weight: bold">
+                Price: ${{ p.price }}
+              </p>
+            </mat-card-content>
+            <span class="example-spacer"></span>
+            <mat-card-actions>
+              <button (click)="removeFromWishList(p)" mat-fab extended>
+                Remove
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

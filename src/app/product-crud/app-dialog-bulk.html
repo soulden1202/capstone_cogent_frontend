@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Upload multiple products</h2>
+<mat-dialog-content class="mat-typography">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 40px;
+      "
+    >
+      <input
+        class="ng-hide"
+        id="input-file-id"
+        type="file"
+        required
+        (change)="onFileChange($event)"
+      />
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    (click)="onConfirm()"
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>

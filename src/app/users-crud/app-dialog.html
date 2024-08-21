@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Make a new Appointment</h2>
+<mat-dialog-content class="mat-typography">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input [(ngModel)]="data.dataKey.email" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>FullName</mat-label>
+      <input [(ngModel)]="data.dataKey.fullName" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        placeholder="Leave blank if you dont need to change password"
+        matInput
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select [(value)]="data.dataKey.role[0].authority">
+        <mat-option value="ROLE_ADMIN">ADMIN</mat-option>
+        <mat-option value="ROLE_USER">USER</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    (click)="onConfirm()"
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>

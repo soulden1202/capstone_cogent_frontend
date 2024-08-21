@@ -1,0 +1,88 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.email }}
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef>Full Name</th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.fullName }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef>Role</th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.role[0].authority }}
+    </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef>Created At</th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.createdAt }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="updatedAt">
+    <th mat-header-cell *matHeaderCellDef>Updated At</th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.updatedAt }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let user">
+      <button
+        style="background-color: green"
+        type="text"
+        mat-stroked-button
+        color="warm"
+        class="btn-block"
+        (click)="openDialog(user)"
+      >
+        Update
+      </button>
+      <button
+        style="background-color: red"
+        type="text"
+        mat-stroked-button
+        color="warm"
+        class="btn-block"
+        *ngIf="user.active"
+        (click)="onActiveStatus(!user.active, user.id)"
+      >
+        Deactive
+      </button>
+      <button
+        style="background-color: red"
+        type="text"
+        mat-stroked-button
+        color="warm"
+        class="btn-block"
+        *ngIf="!user.active"
+        (click)="onActiveStatus(!user.active, user.id)"
+      >
+        Active
+      </button>
+    </td>
+  </ng-container>
+  <!-- Symbol Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

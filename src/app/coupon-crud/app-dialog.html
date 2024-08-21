@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Make a new Appointment</h2>
+<mat-dialog-content class="mat-typography">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <mat-form-field>
+      <mat-label>Code</mat-label>
+      <input [(ngModel)]="code" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Percent</mat-label>
+      <input [(ngModel)]="percent" matInput />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    (click)="onConfirm()"
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>

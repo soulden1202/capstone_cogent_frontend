@@ -1,0 +1,46 @@
+<mat-form-field>
+  <mat-label>Sorting</mat-label>
+  <mat-select (selectionChange)="sorting($event)" name="sort">
+    <mat-option value="priceHigh">Price(Highest)</mat-option>
+    <mat-option value="priceLow">Price(Lowest)</mat-option>
+    <mat-option value="alphaHigh">Alphabet(Z-A)</mat-option>
+    <mat-option value="alphaLow">Alphabet(A-Z)</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-grid-list cols="6" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let p of products">
+    <mat-card appMaterialElevation class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ p.name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="p.imgUrl" alt="Photo of a Shiba Inu" />
+      <mat-card-content>
+        <p style="text-decoration: solid; font-weight: bold">
+          Price: ${{ p.price }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-fab
+          extended
+          color="primary"
+          [disabled]="!isLogin || !login.active"
+          (click)="onCartClick(p)"
+        >
+          <mat-icon> shopping_cart </mat-icon>
+          Cart
+        </button>
+        <button
+          mat-fab
+          extended
+          [disabled]="!isLogin || !login.active"
+          (click)="onWishList(p.id)"
+        >
+          <mat-icon>favorite</mat-icon>
+          Wish List
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

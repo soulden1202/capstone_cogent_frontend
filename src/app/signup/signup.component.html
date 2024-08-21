@@ -1,0 +1,93 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form #registerForm="ngForm" [formGroup]="group">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="firstName"
+            name="firstName"
+            matInput
+            placeholder="First Name"
+            required
+            formControlName="cFirstNameControl"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="lastName"
+            name="lastName"
+            matInput
+            placeholder="Last Name"
+            required
+            formControlName="cLastNameControl"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="email"
+            name="email"
+            matInput
+            placeholder="Email"
+            required
+            formControlName="cUsernameControl"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="password"
+            name="password"
+            matInput
+            placeholder="Password"
+            required
+            formControlName="cPasswordControl"
+            type="password"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="rePassword"
+            name="repassword"
+            matInput
+            placeholder="Re Enter Password"
+            required
+            formControlName="cRePasswordControl"
+            type="password"
+          />
+        </mat-form-field>
+
+        <mat-radio-group
+          [(ngModel)]="type"
+          aria-label="Select an option"
+          formControlName="cTypeControl"
+        >
+          <mat-radio-button value="Admin">Admin</mat-radio-button>
+          <mat-radio-button value="User">User</mat-radio-button>
+        </mat-radio-group>
+
+        <p>
+          Already have an account?
+          <a href="/login"
+            ><span style="text-decoration: underline; color: blue"
+              >Login</span
+            ></a
+          >
+        </p>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          [disabled]="!registerForm.valid"
+          (click)="onRegister()"
+        >
+          Register
+        </button>
+      </mat-card-content>
+    </form>
+    <p>{{ result }}</p>
+  </mat-card>
+</div>

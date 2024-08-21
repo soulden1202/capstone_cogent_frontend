@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Update A Product</h2>
+<mat-dialog-content class="mat-typography">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="data.dataKey.name" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input [(ngModel)]="data.dataKey.description" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input [(ngModel)]="data.dataKey.price" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Stocks</mat-label>
+      <input [(ngModel)]="data.dataKey.stocks" matInput />
+    </mat-form-field>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 40px;
+      "
+    >
+      <input
+        class="ng-hide"
+        id="input-file-id"
+        type="file"
+        (change)="onFileChange($event)"
+      />
+      />
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    (click)="onConfirm()"
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>

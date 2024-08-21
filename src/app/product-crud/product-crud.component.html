@@ -1,0 +1,82 @@
+<div style="position: flex; flex-direction: row">
+  <button mat-button color="primary" (click)="onUpload()">Upload</button>
+
+  <button mat-button color="primary" (click)="onBulk()">Bulk Upload</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let product">
+      {{ product.name }}
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let product">
+      {{ product.description }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let product">
+      {{ product.price }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="stocks">
+    <th mat-header-cell *matHeaderCellDef>Stocks</th>
+    <td mat-cell *matCellDef="let product">
+      {{ product.stocks }}
+    </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="imgUrl">
+    <th mat-header-cell *matHeaderCellDef>Img Url</th>
+    <td mat-cell *matCellDef="let product">
+      <a target="_blank" href="{{ product.imgUrl }}">{{ product.imgUrl }}</a>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let product">
+      <button
+        style="background-color: green"
+        type="text"
+        mat-stroked-button
+        color="warm"
+        class="btn-block"
+        (click)="openDialog(product)"
+      >
+        Update
+      </button>
+      <button
+        style="background-color: red"
+        type="text"
+        mat-stroked-button
+        color="warm"
+        class="btn-block"
+        (click)="onDelete(product.id)"
+      >
+        Delete
+      </button>
+    </td>
+  </ng-container>
+  <!-- Symbol Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,59 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+
+    <form #loginForm="ngForm" [formGroup]="group">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="email"
+            name="email"
+            matInput
+            placeholder="Email"
+            required
+            formControlName="cUsernameControl"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            [(ngModel)]="password"
+            name="password"
+            matInput
+            placeholder="Password"
+            required
+            formControlName="cPasswordControl"
+            type="password"
+          />
+        </mat-form-field>
+        <!-- 
+      <mat-form-field class="example-full-width">
+        <mat-radio-group [(ngModel)]="type" aria-label="Select an option">
+          <mat-radio-button value="Admin">Admin</mat-radio-button>
+          <mat-radio-button value="Patient">Patient</mat-radio-button>
+        </mat-radio-group>
+      </mat-form-field> -->
+
+        <p>
+          Don't have an account?
+          <a href="/signup"
+            ><span style="text-decoration: underline; color: blue"
+              >Sign Up!</span
+            ></a
+          >
+        </p>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          [disabled]="!loginForm.valid"
+          (click)="onLogin()"
+        >
+          Log in
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
